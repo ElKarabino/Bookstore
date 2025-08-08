@@ -1,5 +1,5 @@
 export const BooksPage = () => {
     return (
-        <div></div>
+        <div>Books</div>
     )
 }
