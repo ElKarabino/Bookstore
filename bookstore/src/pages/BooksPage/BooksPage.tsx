@@ -15,7 +15,6 @@ export const BooksPage = () => {
         <div>
             <Header />
             <BooksPageContent />
-            <LoadMoreButton />
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { getBooks } from "../thunks/BooksThunk";
 
 const initialState = {
     booksData: []
@@ -14,7 +15,12 @@ export const BooksSlice = createSlice({
                 booksData:action.payload
             }
         }
-    }
+    },
+    extraReducers: (builder) => {
+    builder.addCase(getBooks.fulfilled, (state, action) => {
+      state.booksData = action.payload; // обновление
+    });
+  }
 })
 
 export const { setBooks } = BooksSlice.actions;
