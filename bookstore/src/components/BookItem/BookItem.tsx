@@ -2,18 +2,21 @@ import { useDispatch } from "react-redux"
 import { Book } from "../../types/Book"
 import './BookItem.scss'
 
-type BookProps = {
-    book: Book,
-}
+type BookItemProps = {
+  id: string;
+  title: string;
+  image?: string;
+  price?: string;
+};
 
-export const BookItem = ({book}: BookProps) => {
+export const BookItem = ({ title, image, price, id }: BookItemProps) => {
     const dispatch = useDispatch();
 
     return (
-        <li key={book.isbn13}>
-            <img src={book.image} alt="book" />
-            <p>{book.title}</p>
-            <p>{book.price}</p>
+        <li key={id}>
+            <img src={image} alt="book" />
+            <p>{title}</p>
+            <p>{price}</p>
         </li>
     )
 }

@@ -9,7 +9,6 @@ export const BooksPageContent = () => {
             <Container>
                 <h2 className="BooksPageContent_title">Best Seller</h2>
                 <BooksList />
-                <LoadMoreButton />
             </Container>
         </div>
     )

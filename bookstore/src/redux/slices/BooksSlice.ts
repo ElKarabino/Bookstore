@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import { getBooks } from "../thunks/BooksThunk";
 
 const initialState = {
-    booksData: []
+    booksData: [],
+    searchTitle: '',
 }
 
 export const BooksSlice = createSlice({
@@ -14,14 +15,17 @@ export const BooksSlice = createSlice({
                 ...state,
                 booksData:action.payload
             }
+        },
+        searchBooks:(state, action) => {
+            state.searchTitle = action.payload
         }
     },
     extraReducers: (builder) => {
-    builder.addCase(getBooks.fulfilled, (state, action) => {
-      state.booksData = action.payload; // обновление
-    });
-  }
+        builder.addCase(getBooks.fulfilled, (state, action) => {
+            state.booksData = action.payload; 
+        });
+    }
 })
 
-export const { setBooks } = BooksSlice.actions;
+export const { setBooks, searchBooks } = BooksSlice.actions;
 export default BooksSlice.reducer 
