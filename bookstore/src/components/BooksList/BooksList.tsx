@@ -19,7 +19,7 @@ export const BooksList = () => {
     );
     
     useEffect(() => {
-        if (currentPage > 1) {
+        if (currentPage > 1 ) {
             dispatch(getBooks(currentPage))
         }
     }, [dispatch, currentPage])
@@ -29,6 +29,7 @@ export const BooksList = () => {
                 {searchedBooks.map((book:any) => (
                     <BookItem 
                         key={book.isbn13}
+                        isbn13 = {book.isbn13}
                         title={book.title}
                         image={book.image}
                         price={book.price}

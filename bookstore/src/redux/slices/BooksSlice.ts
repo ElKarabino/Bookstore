@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getBooks } from "../thunks/BooksThunk";
+import { getBookDetails, getBooks } from "../thunks/BooksThunk";
 import { Book } from "../../types/Book";
+import { BookDetails } from "../../types/BookDetails";
 
 interface BooksState {
   booksData: Book[];
   searchTitle: string;
-  currentPage: number,
-  totalPages: number,
+  currentPage: number;
+  totalPages: number;
+  bookDetails: BookDetails | null;
 }
 
 const initialState: BooksState = {
@@ -14,6 +16,7 @@ const initialState: BooksState = {
     searchTitle: '',
     currentPage: 1,
     totalPages: 8,
+    bookDetails: null,
 }
 
 export const BooksSlice = createSlice({
@@ -25,6 +28,10 @@ export const BooksSlice = createSlice({
                 ...state,
                 booksData:action.payload
             }
+        },
+        resetBooks:(state) => {
+            state.booksData = [];
+            state.currentPage = 1;
         },
         searchBooks:(state, action) => {
             state.searchTitle = action.payload
@@ -43,8 +50,11 @@ export const BooksSlice = createSlice({
             state.booksData = [...state.booksData, ...action.payload.books]
            }
         });
+        builder.addCase(getBookDetails.fulfilled, (state, action) => {
+            state.bookDetails = action.payload
+        })
     }
 })
 
-export const { setBooks, searchBooks, setNextPage } = BooksSlice.actions;
+export const { setBooks, searchBooks, setNextPage, resetBooks } = BooksSlice.actions;
 export default BooksSlice.reducer 

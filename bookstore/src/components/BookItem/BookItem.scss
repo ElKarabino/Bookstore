@@ -1,0 +1,35 @@
+.BookItem {
+    background-color: #F4F4FF;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    padding: 20px;
+    box-sizing: border-box; 
+}
+.BookItemImage {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.BookItemContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    p {
+        font-family: 'Manrope', sans-serif;
+        margin: 0;
+    }
+}
+.BookItemContentTitle {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.BookItemContentPrice {
+    font-size: 24px;
+    font-weight: 700;
+    color: #6251DD;
+}
