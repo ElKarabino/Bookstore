@@ -20,6 +20,6 @@ export const getBooks = createAsyncThunk<BooksResponse, number>('books/getBooks'
 
 export const getBookDetails = createAsyncThunk<BookDetails, string>('book/getBookDetails', async(isbn13) => {
     const response = await axiosInstance.get(`1.0/books/${isbn13}`)
-    console.log("Response data:", response.data);
+    console.log( response.data);
     return response.data
 })

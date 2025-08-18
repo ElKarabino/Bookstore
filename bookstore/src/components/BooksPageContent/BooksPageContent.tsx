@@ -1,6 +1,5 @@
 import { BooksList } from "../BooksList/BooksList"
 import { Container } from "../Container/Container"
-import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton"
 import './BooksPageContent.scss'
 
 export const BooksPageContent = () => {

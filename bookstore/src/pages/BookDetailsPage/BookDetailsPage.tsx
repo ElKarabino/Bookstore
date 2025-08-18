@@ -6,7 +6,7 @@
         import { Header } from "../../components/Header/Header";
         import { BookDetailsContent } from "../../components/BookDetailsContent/BookDetailsContent";
 
-        export const BooksDetailsPage = () => {
+        export const BookDetailsPage = () => {
             const {isbn13} =  useParams<{ isbn13: string }>();;
             const dispatch = useDispatch<any>();
             const bookDetails = useSelector((state:RootState) => state.books.bookDetails);
