@@ -4,6 +4,7 @@ import { Logo } from "../../assets/svg/Logo"
 import { Container } from "../Container/Container"
 import './Header.scss'
 import { SearchInput } from "../SearchInput/SearchInput"
+import { Link } from "react-router-dom"
 
 export const Header = () => {
     
@@ -17,7 +18,9 @@ export const Header = () => {
                         <Favorite />
                     </div>
                     <div className="HeaderIconWrapper">
-                        <CartIcon />
+                        <Link to={'/cart'}>
+                            <CartIcon />
+                        </Link>
                     </div>
                 </div>
             </Container>

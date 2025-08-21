@@ -1,5 +1,11 @@
-export const BuyNowButton = () => {
+import { MouseEventHandler } from "react"
+
+type BuyNowButtonProps = {
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+}
+
+export const BuyNowButton = ({ onClick }: BuyNowButtonProps) => {
     return (
-        <button>Buy Now</button>
+        <button onClick={onClick}>Buy Now</button>
     )
 }

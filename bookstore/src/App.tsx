@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<BooksPage />} />
         <Route path='/books/:isbn13' element={<BookDetailsPage />} />
-        <Route path='/' element={<CartPage />} />
+        <Route path='/cart' element={<CartPage />} />
       </Routes>
     </BrowserRouter>
   );
