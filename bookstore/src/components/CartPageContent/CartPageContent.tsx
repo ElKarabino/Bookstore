@@ -1,14 +1,18 @@
-import { useSelector } from "react-redux"
-import { CartItem } from "../CartItem/CartItem"
+import { Container } from "../Container/Container"
+import "./CartPageContent.scss"
+import { CartList } from "../CartList/CartList"
+import { ClearAllButton } from "../ClearAllButton/ClearAllButton"
 
 export const CartPageContent = () => {
-    const cartItems  = useSelector((state: any)  => state.cart?.cartItems || [])
     return (
-        <div>
-            {cartItems.length === 0 && <p>Empty Basket</p>}
-            {cartItems.map((item:any) => (
-                <CartItem key={item.isbn13} book={item} />
-            ))}
+        <div className="CartPageContent">
+            <Container>
+                <div>
+                    <h2>Cart</h2>
+                    <ClearAllButton />
+                </div>
+                <CartList />
+            </Container>
         </div>
     )
 }

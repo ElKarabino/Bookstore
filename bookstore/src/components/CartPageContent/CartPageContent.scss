@@ -1,0 +1,14 @@
+.CartPageContent {
+    background: linear-gradient(
+    to bottom,         
+    #0909371A,          
+    #fff         
+  );
+    padding: 40px 0 22px 0;
+}
+.CartList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+}

@@ -1,4 +1,5 @@
 import { Book } from "../../types/Book";
+import './CartItem.scss'
 
 type CartItemProps = {
   book: Book;
@@ -6,13 +7,13 @@ type CartItemProps = {
 
 export const CartItem = ({ book }: CartItemProps) => {
     return (
-        <div>
-            <div className='BookItemImage'>
+        <div className="CartItem">
+            <div className='CartItemImage'>
                 <img src={book.image} alt="book" />
             </div>
-            <div className='BookItemContent'>
-                <p className='BookItemContentTitle'>{book.title}</p>
-                <p className='BookItemContentPrice'>{book.price}</p>
+            <div className='CartItemContent'>
+                <p className='CartItemContentTitle'>{book.title}</p>
+                <p className='CartItemContentPrice'>{book.price}</p>
             </div>
         </div>
     )
