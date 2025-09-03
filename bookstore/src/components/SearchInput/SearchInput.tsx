@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
 import { searchBooks } from "../../redux/slices/BooksSlice";
+import './SearchInput.scss'
+import { SearchIcon } from "../../assets/svg/SearcIcon";
 
 export const SearchInput = () => {
     const dispatch = useDispatch();
@@ -7,10 +9,14 @@ export const SearchInput = () => {
         dispatch(searchBooks(event.target.value))
     }
     return (
-        <input 
-            placeholder="Search" 
-            className="SearchInput"
-            onChange={handleInput}
+        <div className="SearchInputWrapper">
+            <SearchIcon className="SearchIcon"/>
+            <input 
+                placeholder="Search"
+                className="SearchInput"
+                onChange={handleInput}
             />
+        </div>
+        
     )
 }

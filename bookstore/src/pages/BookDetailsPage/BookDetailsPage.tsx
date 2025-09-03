@@ -4,7 +4,7 @@
         import { useEffect } from "react";
         import { getBookDetails } from "../../redux/thunks/BooksThunk";
         import { Header } from "../../components/Header/Header";
-        import { BookDetailsContent } from "../../components/BookDetailsContent/BookDetailsContent";
+        import { BookDetailsPageContent } from "../../components/BookDetailsContent/BookDetailsPageContent";
 
         export const BookDetailsPage = () => {
             const {isbn13} =  useParams<{ isbn13: string }>();;
@@ -19,7 +19,7 @@
             return (
                 <div>
                     <Header />
-                    {bookDetails && <BookDetailsContent bookDetails = {bookDetails} />}
+                    {bookDetails && <BookDetailsPageContent bookDetails = {bookDetails} />}
                 </div>
             )
         }

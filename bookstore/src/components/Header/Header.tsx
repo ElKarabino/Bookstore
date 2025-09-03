@@ -12,15 +12,19 @@ export const Header = () => {
         <header>
             <Container>
                 <div className="HeaderWrapper">
-                    <Logo />
+                    <Link to={'/'}>
+                        <Logo />
+                    </Link>
                     <SearchInput/>
-                    <div className="HeaderIconWrapper">
-                        <Favorite />
-                    </div>
-                    <div className="HeaderIconWrapper">
+                    <div className="HeaderIconsWrapper">
+                        <div className="HeaderIconWrapper">
+                            <Favorite />
+                        </div>
+                        <div className="HeaderIconWrapper">
                         <Link to={'/cart'}>
                             <CartIcon />
                         </Link>
+                        </div>
                     </div>
                 </div>
             </Container>
