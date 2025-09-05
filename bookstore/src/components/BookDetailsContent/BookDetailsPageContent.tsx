@@ -26,7 +26,7 @@ export const BookDetailsPageContent = ({bookDetails} : BookDetailsContentProps) 
                     </Link>
                 </div>
                 <BookDetailsItem bookDetails = {bookDetails}/>
-                <BuyNowButton onClick={addToCart}/>
+                <BuyNowButton onClick={addToCart} bookDetails = {bookDetails}/>
             </Container>
         </div>
     )

@@ -1,4 +1,5 @@
 import { BookDetails } from "../../types/BookDetails";
+import "./BookDetailsItem.scss"
 
 type BookDetailsContentProps = {
     bookDetails: BookDetails;
@@ -8,13 +9,14 @@ type BookDetailsContentProps = {
 export const BookDetailsItem = ({bookDetails}: BookDetailsContentProps ) => {
     return (
         <div className="BookDetailsItem">
-            <div>
+            <div className="BookDetailsItemImg">
                 <img src={bookDetails.image} alt={bookDetails.title} />
             </div>
-                <div>
-                    <h2>{bookDetails.title}</h2>
-                    <p>{bookDetails.desc}</p>
-                    <p>Price: {bookDetails.price}</p>
+                <div className="BookDetailsItemContent">
+                    <h2 className="BookDetailsItemTitle">{bookDetails.title}</h2>
+                    <p className="BookDetailsItemAuthors">{bookDetails.authors}</p>
+                    <p className="BookDetailsItemSummary">Summary</p>
+                    <p className="BookDetailsItemDesc">{bookDetails.desc}</p>
                 </div>
         </div>
      )

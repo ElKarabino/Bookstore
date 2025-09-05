@@ -1,0 +1,44 @@
+.BookDetailsItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 80px;
+    margin-bottom: 130px;
+}
+.BookDetailsItemImg {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 420 / 570;
+    background-color: #0909371A;
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+.BookDetailsItemTitle {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+.BookDetailsItemAuthors {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.BookDetailsItemSummary {
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color:rgba(9, 9, 55, 1)
+}
+.BookDetailsItemDesc {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgba(9, 9, 55, 0.6);
+}
