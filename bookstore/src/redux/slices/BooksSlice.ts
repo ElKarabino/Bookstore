@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getBookDetails, getBooks } from "../thunks/BooksThunk";
+import { getBookDetails, getBooks, searchBooks } from "../thunks/BooksThunk";
 import { Book } from "../../types/Book";
 import { BookDetails } from "../../types/BookDetails";
 
 interface BooksState {
   booksData: Book[];
-  searchTitle: string;
+  searchQuery: string;
   currentPage: number;
   totalPages: number;
   bookDetails: BookDetails | null;
@@ -13,7 +13,7 @@ interface BooksState {
 
 const initialState: BooksState = {
     booksData: [],
-    searchTitle: '',
+    searchQuery: '',
     currentPage: 1,
     totalPages: 8,
     bookDetails: null,
@@ -33,8 +33,10 @@ export const BooksSlice = createSlice({
             state.booksData = [];
             state.currentPage = 1;
         },
-        searchBooks:(state, action) => {
-            state.searchTitle = action.payload
+        searchQuery:(state, action) => {
+            state.searchQuery = action.payload;
+            state.booksData = [];
+            state.currentPage = 1;
         },
         setNextPage:(state) => {
             if(state.currentPage < state.totalPages) {
@@ -44,17 +46,20 @@ export const BooksSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getBooks.fulfilled, (state, action) => {
-           if(action.payload.page === 1) {
-            state.booksData = []; 
-           } else {
-            state.booksData = [...state.booksData, ...action.payload.books]
-           }
+           state.booksData = action.payload.books;
         });
         builder.addCase(getBookDetails.fulfilled, (state, action) => {
-            state.bookDetails = action.payload
+            state.bookDetails = action.payload;
+        })
+        builder.addCase(searchBooks.fulfilled, (state, action) => {
+            if (state.currentPage === 1) {
+                state.booksData = action.payload.books;
+            } else {
+                state.booksData = [...state.booksData, ...action.payload.books];
+            }
         })
     }
 })
 
-export const { setBooks, searchBooks, setNextPage, resetBooks } = BooksSlice.actions;
+export const { setBooks, searchQuery, setNextPage, resetBooks } = BooksSlice.actions;
 export default BooksSlice.reducer 

@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://api.itbook.store/'
+    baseURL: 'https://api.itbook.store/1.0/'
 });

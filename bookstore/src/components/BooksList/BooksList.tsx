@@ -1,32 +1,34 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Book } from "../../types/Book";
 import { useEffect } from "react";
-import { getBooks } from "../../redux/thunks/BooksThunk";
+import { getBooks, searchBooks } from "../../redux/thunks/BooksThunk";
 import { BookItem } from "../BookItem/BookItem";
 import './BooksList.scss'
-import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { RootState } from "../../redux/store/Store";
+import { LoadMoreButton } from "../LoadMoreButton/LoadMoreButton";
 import { setNextPage } from "../../redux/slices/BooksSlice";
+
 
 export const BooksList = () => {
     const dispatch: any = useDispatch();
-    const {booksData, searchTitle, currentPage, totalPages} = useSelector(
+    const {booksData, searchQuery, currentPage, totalPages} = useSelector(
         (state: RootState) => state.books
     );
     
-    const searchedBooks = booksData.filter((book :Book) => 
-        book.title.toLowerCase().includes(searchTitle.toLowerCase())
-    );
-    
-    useEffect(() => {
-        if (currentPage > 1 ) {
-            dispatch(getBooks(currentPage))
+    useEffect(() => {   
+        if (searchQuery) {
+            dispatch(searchBooks({query: searchQuery, page: currentPage}))
+        } else {
+        dispatch(getBooks())
         }
-    }, [dispatch, currentPage])
+    }, [dispatch, searchQuery, currentPage])
+
+    const handleLoadMore = () => {
+        dispatch(setNextPage());
+    };
     return (
         <>
             <ul className="BooksList">
-                {searchedBooks.map((book:any) => (
+                {booksData.map((book:any) => (
                     <BookItem 
                         key={book.isbn13}
                         isbn13 = {book.isbn13}
@@ -37,7 +39,7 @@ export const BooksList = () => {
                 ))}
             </ul>
             {currentPage < totalPages && (
-                <LoadMoreButton onClick = {() => dispatch(setNextPage())}/>
+                <LoadMoreButton onClick={handleLoadMore} />
             )}
         </>
     )

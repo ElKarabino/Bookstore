@@ -11,7 +11,7 @@ export const BooksPage = () => {
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(resetBooks());
-        dispatch(getBooks(1))
+        dispatch(getBooks())
     }, [dispatch])
     return (
         <div>
