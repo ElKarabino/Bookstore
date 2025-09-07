@@ -8,7 +8,6 @@ export const SearchInput = () => {
     const dispatch = useDispatch();
     const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
         dispatch(searchQuery(event.target.value));
-        console.log(typeof dispatch)
     }
     return (
         <div className="SearchInputWrapper">

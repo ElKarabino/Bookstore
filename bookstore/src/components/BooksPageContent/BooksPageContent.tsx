@@ -6,7 +6,7 @@ export const BooksPageContent = () => {
     return (
         <div className="BooksPageContent">
             <Container>
-                <h2 className="BooksPageContent_title">Best Seller</h2>
+                <h2 className="BooksPageContentTitle">Best Seller</h2>
                 <BooksList />
             </Container>
         </div>
