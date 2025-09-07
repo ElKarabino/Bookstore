@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { clearAll } from "../../redux/slices/CartSlice";
+import './ClearAllButton.scss'
 
 export const ClearAllButton = () => {
     const dispatch = useDispatch();
@@ -8,6 +9,6 @@ export const ClearAllButton = () => {
         dispatch(clearAll())
     }
     return ( 
-        <button onClick={clearCart}>Clear all</button>
+        <button className="ClearAllButton" onClick={clearCart}>Clear all</button>
     )
 }

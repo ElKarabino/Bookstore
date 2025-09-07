@@ -7,8 +7,8 @@ export const CartPageContent = () => {
     return (
         <div className="CartPageContent">
             <Container>
-                <div>
-                    <h2>Cart</h2>
+                <div className="CartPageContentWrapper">
+                    <h2 className="CartPageContentTitle">Cart</h2>
                     <ClearAllButton />
                 </div>
                 <CartList />
