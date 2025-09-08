@@ -15,7 +15,7 @@ const initialState: BooksState = {
     booksData: [],
     searchQuery: '',
     currentPage: 1,
-    totalPages: 8,
+    totalPages: 0,
     bookDetails: null,
 }
 
@@ -57,6 +57,12 @@ export const BooksSlice = createSlice({
             } else {
                 state.booksData = [...state.booksData, ...action.payload.books];
             }
+            state.currentPage = action.payload.page ?? 1;
+
+        
+            if (action.payload.totalPages !== undefined) {
+            state.totalPages = action.payload.totalPages;
+        }
         })
     }
 })

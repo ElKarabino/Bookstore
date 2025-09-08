@@ -7,7 +7,8 @@ import { BookDetails } from "../../types/BookDetails";
 interface BooksResponse {
     books: Book[];
     page?: number;
-    query?: string
+    query?: string;
+    totalPages?: number;
 }
 interface SearchBooksArgs {
   query: string;
@@ -25,9 +26,11 @@ export const searchBooks = createAsyncThunk<BooksResponse, SearchBooksArgs>(
   'books/searchBooks', 
   async ({ query, page = 1 }: SearchBooksArgs) => {
     const response = await axiosInstance.get(`search/${encodeURIComponent(query)}/${page}`);
+    const totalPages =  Math.ceil(response.data.total / 10)
     return {
         books: response.data.books,
         page: parseInt(response.data.page),
+        totalPages,
     }
   }
 );
